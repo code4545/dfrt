@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@Scripts.Render("~/Scripts/dfrt.js")
+<h3 align="center">DEPLOYMENT FAILURE RETRO TRACKER</h3>
+<div>
+    <h4>From Date</h4>
+    <input id="frmdatetimepicker" />
+    <h4>To Date</h4>
+    <input id="todatetimepicker" />
+    <div>
+        <div>
+            <h4>Select Category</h4>
+            <input id="color" value="Select Category" style="width: 19%;" />
+        </div>
+    </div>
+    <div>
+        Is Retro:<input type="checkbox" checked="checked" id="myCheck" onclick="myFunction()">
+        </div>
+    <button class="btn btn-sub" id="btnsubmit">Submit</button>
+    <button class="btn btn-ref" id="btnrefresh">Refresh</button>
+    <div class="row">
+        <div class="col-md-12">
+            <h4></h4>
+            <div id="gridretro"></div>
+        </div>
+    </div>
+    
+      
+    </div>
+
+
+
+
+
+
+
+
