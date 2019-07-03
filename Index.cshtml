@@ -2,32 +2,52 @@
     ViewBag.Title = "Home Page";
 }
 @Scripts.Render("~/Scripts/dfrt.js")
-<h3 align="center">DEPLOYMENT FAILURE RETRO TRACKER</h3>
-<div>
+<h3 align="center">Dfrt</h3>
+<form action="GetDetails" method="post">
+    <div>Error Description: <input type="text" name="ErrorDescription"> </ br></div>
+    </form>
+
+
+
+   @*<div>
     <h4>From Date</h4>
     <input id="frmdatetimepicker" />
     <h4>To Date</h4>
-    <input id="todatetimepicker" />
-    <div>
-        <div>
-            <h4>Select Category</h4>
-            <input id="color" value="Select Category" style="width: 19%;" />
-        </div>
-    </div>
-    <div>
-        Is Retro:<input type="checkbox" checked="checked" id="myCheck" onclick="myFunction()">
-        </div>
-    <button class="btn btn-sub" id="btnsubmit">Submit</button>
-    <button class="btn btn-ref" id="btnrefresh">Refresh</button>
-    <div class="row">
-        <div class="col-md-12">
-            <h4></h4>
-            <div id="gridretro"></div>
-        </div>
-    </div>
-    
-      
-    </div>
+    <input id="todatetimepicker" />*@
+    @*<div>
+            <div>
+                <h4>Select Category</h4>
+                <input id="Category" value="Select Category" style="width: 19%;" />
+            </div>
+        </div>*@
+    @*@model DeploymentFailureRetroTracker.Models.Dfrt
+                <h4>Select Category</h4>
+             @Html.DropDownListFor(m=>m.CategoryId, new List<SelectListItem>
+           {
+             new SelectListItem {Text="A",Value ="1"},
+            new SelectListItem {Text="b",Value ="2"},
+            new SelectListItem {Text="c",Value ="3"}
+
+           })
+
+                <div>
+                    Is Retro:<input type="checkbox" name="retro" checked="checked" id="myCheck" onclick="myFunction()">
+                </div>
+            </div>
+            <button class="btn btn-sub" id="btnsubmit">Submit</button>
+        <button class="btn btn-ref" id="btnrefresh">Refresh</button>
+        </form>
+        <form action="GetDetails" method="post">
+            <div>Error Description: <input type="text" name="ErrorDescription"><br></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4></h4>
+                    <div id="gridretro"></div>
+                </div>
+            </div>
+
+        </form>*
+
 
 
 

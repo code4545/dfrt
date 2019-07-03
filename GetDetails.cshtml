@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@Scripts.Render("~/Scripts/dfrt.js")
+<h3 align="center">Dfrt</h3>
+<form action="/Home/GetDetails" method="post">
+
+    <div>
+        <h4>From Date</h4>
+        <input id="frmdatetimepicker" name="frmdatetimepicker" />
+        <h4>To Date</h4>
+        <input id="todatetimepicker" name="todatetimepicker" />
+        @*<div>
+                <div>
+                    <h4>Select Category</h4>
+                    <input id="Category" value="Select Category" style="width: 19%;" />
+                </div>
+            </div>*@
+        @model DeploymentFailureRetroTracker.Models.Dfrt
+        <h4>Select Category</h4>
+        @Html.DropDownListFor(m => m.CategoryId, new List<SelectListItem>
+   {
+     new SelectListItem {Text="A",Value ="1"},
+    new SelectListItem {Text="b",Value ="2"},
+    new SelectListItem {Text="c",Value ="3"}
+
+   })<div>Error Description: <input type="text" name="ErrorDescription" @*value="Mickey"*@><br></div>
+
+        <div>
+            Is Retro:<input type="checkbox" name="IsRetro" checked="checked" id="myCheck" onclick="myFunction()">
+        </div>
+    </div>
+    <button class="btn btn-sub" id="btnsubmit">Submit</button>
+    <button class="btn btn-ref" id="btnrefresh">Refresh</button>
+
+
+
+
+</form>
+<form action="GetDetails" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <h4></h4>
+            <div id="gridretro"></div>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
