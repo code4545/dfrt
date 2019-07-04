@@ -1,140 +1,115 @@
 ﻿$(document).ready(function () {
     kendoUIHelper.generatekendogrid();
 
-
     $("#frmdatetimepicker").kendoDateTimePicker({
-        value: new Date(),
-        dateInput: true
+         format: "MM/dd/yyyy hh:mm tt",
+        defaultDate: new Date()
     });
     $("#todatetimepicker").kendoDateTimePicker({
-        value: new Date(),
-        dateInput: true
+        format: "MM/dd/yyyy hh:mm tt",
+        defaultDate: new Date()
     });
     $("btnrefresh").click(function () {
 
     });
-    $("#Category").kendoDropDownList({
-     
-    });
-   
     $("#btnsubmit").click(function ()
     { 
-        var date = $("#frmdatetimepicker").data("kendoDateTimePicker").value();
-      
-        //var date1 = $("#todatetimepicker").data("kendoDateTimePicker").value();
-        $.ajax({   
-            type: "post",   
-            url: "/Home/GetDetails",   
-            data: JSON.stringify(Dfrt),   
-            datatype: "json",   
-            traditional: true,   
-            success: function (data) {   
-                // debugger   
-                if (data == "No Record Found") {   
-                    alert('No Record Found');   
-                }   
-                else {   
-                    $('#gridretro').html(data);   
-                    
-                }   
-            }   
-        });   
+        
     });   
        
     });
-
-
     var kendoUIHelper = {
         generatekendogrid: function () {
         
    
             $("#gridretro").kendoGrid({
-                //scrollable: true,
-                //sortable: true,
-                //pageable: {
-                //    refresh: false,
-                //    pageSizes: [5, 10, 20, 30],
-                //    buttonCount: 5
-                //},
+                dataSource: [{ DeptId: 1, Environment: "Dev", BuildNumber: 007, IsRetro: true, CategoryName:"Production" }],
+                scrollable: true,
+                sortable: true,
+                pageable: {
+                    refresh: false,
+                    pageSizes: [5, 10, 20, 30],
+                    buttonCount: 5
+                },
                 //filterable: true,
                 navigatable: true,
                 editable: "inline",
                 columns: [
                     {
-                        field: "EmailAddress",
+                        field: "DeptId",
                         title: "Dep.ID",
                     },
                     {
-                        field: "Env",
+                        field: "Environment",
                         title: "Env",
           
                     },
                     {
-                        field: "ModifiedBy",
+                        field: "BuildNumber",
                         title: "Build No.",
                         width : "6em",
             
                     },
                     {
-                        field: "ModifiedOn",
+                        field: "X",
                         title: "x ",
                         width: "2em",
                     },
                     {
-                        field: "ModifiedBy",
+                        field: "Y",
                         title: "y",
                         width: "2em",
             
                     },
                      {
-                         field: "ModifiedBy",
+                         field: "Z",
                          title: "z",
                          width: "2em",
             
                      },
                       {
-                          field: "ModifiedBy",
+                          field: "Owner",
                           title: "Owner",
             
                       },
                        {
-                           field: "ModifiedBy",
+                           field: "Status",
                            title: "Status",
             
                        },
                         {
-                            field: "ModifiedBy",
+                            field: "IsRetro",
                             title: "Retro",
             
                         },
                          {
-                             field: "ModifiedBy",
+                             field: "BugID",
                              title: "BugID",
             
                          },
                           {
-                              field: "ModifiedBy",
+                              field: "Fix",
                               title: "Fix",
             
                           },
                            {
-                               field: "ModifiedBy",
+                               field: "Failure",
                                title: "Failure",
             
                            },
                             {
-                                field: "ModifiedBy",
+                                field: "CategoryName",
                                 title: "Category",
             
                             },
                              {
-                                 field: "ModifiedBy",
+                                 field: "LstModified",
                                  title: "Last Modified",
                                  width: "8em",
             
                              },
                               {
-                                  field: "ModifiedBy",
+                                  field: "",
                                   title: "Action",
                               }
                 ],
@@ -143,12 +118,33 @@
             });
         }
     }
+    //displaying the data in the grid
+    function displayGrid() {
+        
+        var deploy = {
+            ErrorDescription: $("#ErrorDescription").val() 
+        };
 
-    function Subdet() {
-        var userModel = {
-            FromDate: $("#frmdatetimepicker").val(),
-            ToDate: $("#todatetimepicker").val(),
-            Category: $("#Category").val(),
-            IsRetro: $("#myCheck").val()
-        }
-    };
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetDetails",
+            data: JSON.stringify(deploy),
+            cache: false,
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                if (result.length > 0) {
+                    $("#ErrorDescription").show();
+                    gridretro(result);
+                }
+                else {
+                    $("#gridretro").hide();
+                }
+                $('.navigationMenu').css("display", "none");
+            },
+            error: function (xmlHttpRequest, textStatus, errorThrown) {
+                $('.navigationMenu').css("display", "none");
+                handleAjaxError(xmlHttpRequest, textStatus);
+            }
+        });
+    }
