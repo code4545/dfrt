@@ -5,20 +5,23 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace DeploymentFailureRetroTracker.Models
+namespace DeploymentFailure_RetroTracker.Models 
 {
     public class Dfrt
     {
-        
+
         public DateTime FromDate { get; set; }
-     
+
+        //    public string FromDate { get; set; }
+
         public DateTime ToDate { get; set; }
+        //public string ToDate { get; set; }
 
         public List<SelectListItem> Categories { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        [Required(ErrorMessage ="Is Retro is mandatory")]
-        public bool? IsRetro {get;set;}
+        [Required(ErrorMessage = "Is Retro is mandatory")]
+        public bool? IsRetro { get; set; }
 
         public string ErrorDescription { get; set; }
 
@@ -48,8 +51,7 @@ namespace DeploymentFailureRetroTracker.Models
 
 
     }
-  
 
-       
-    }
 
+
+}

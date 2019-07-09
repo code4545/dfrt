@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DeploymentFailureRetroTracker.Models;
 
 
-namespace DeploymentFailureRetroTracker.Controllers
+namespace DeploymentFailure_RetroTracker.Controllers
 {
     public class HomeController : Controller
     {
@@ -22,7 +18,8 @@ namespace DeploymentFailureRetroTracker.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult GetDetails(DateTime? FromDate, DateTime? ToDate, int CategoryId, string CategoryName,bool? IsRetro, string ErrorDescription)
+        //public ActionResult GetDetails(DateTime? FromDate, DateTime? ToDate, int CategoryId, string CategoryName,bool? IsRetro, string ErrorDescription)
+        public ActionResult GetDetails(string FromDate, string ToDate, int CategoryId, string IsRetro, string ErrorDescription)
         {
             return View();
 

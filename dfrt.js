@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+$(document).ready(function () {
     kendoUIHelper.generatekendogrid();
 
     $("#frmdatetimepicker").kendoDateTimePicker({
@@ -18,106 +18,115 @@
     });   
        
     });
-    var kendoUIHelper = {
-        generatekendogrid: function () {
-        
-   
-            $("#gridretro").kendoGrid({
-                dataSource: [{ DeptId: 1, Environment: "Dev", BuildNumber: 007, IsRetro: true, CategoryName:"Production" }],
-                scrollable: true,
-                sortable: true,
-                pageable: {
-                    refresh: false,
-                    pageSizes: [5, 10, 20, 30],
-                    buttonCount: 5
+var kendoUIHelper = {
+    generatekendogrid: function () {
+
+
+        $("#gridretro").kendoGrid({
+            dataSource: [{ DeptId: 1, Environment: "Dev", BuildNumber: "007", IsRetro: true, CategoryName: "Production" }],
+            scrollable: true,
+            sortable: true,
+            pageable: {
+                refresh: false,
+                pageSizes: [5, 10, 20, 30],
+                buttonCount: 5
+            },
+            //filterable: true,
+            navigatable: true,
+            columns: [
+                {
+                    field: "DeptId",
+                    title: "Dep.ID"
                 },
-                //filterable: true,
-                navigatable: true,
-                editable: "inline",
-                columns: [
-                    {
-                        field: "DeptId",
-                        title: "Dep.ID",
-                    },
-                    {
-                        field: "Environment",
-                        title: "Env",
-          
-                    },
-                    {
-                        field: "BuildNumber",
-                        title: "Build No.",
-                        width : "6em",
+                {
+                    field: "Environment",
+                    title: "Env"
+
+                },
+                {
+                    field: "BuildNumber",
+                    title: "Build No.",
+                    width: "6em"
+
+                },
+                {
+                    field: "X",
+                    title: "x ",
+                    width: "2em"
+                },
+                {
+                    field: "Y",
+                    title: "y",
+                    width: "2em"
+
+                },
+                {
+                    field: "Z",
+                    title: "z",
+                    width: "2em"
+
+                },
+                {
+                    field: "Owner",
+                    title: "Owner"
+
+                },
+                {
+                    field: "Status",
+                    title: "Status"
+
+                },
+                {
+                    field: "IsRetro",
+                    title: "Retro"
+
+                },
+                {
+                    field: "BugID",
+                    title: "BugID"
+
+                },
+                {
+                    field: "Fix",
+                    title: "Fix"
+
+                },
+                {
+                    field: "Failure",
+                    title: "Failure"
+
+                },
+                {
+                    field: "CategoryName",
+                    title: "Category"
+
+                },
+                {
+                    field: "LstModified",
+                    title: "Last Modified",
+                    width: "8em", editor: customBoolEditor
+                },
+                //{
+                //    field: "",
+                //    title: "Edit/Update",
+                //    editor: customBoolEditor
+                //},
+                { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
+                editable: "inline"
             
-                    },
-                    {
-                        field: "X",
-                        title: "x ",
-                        width: "2em",
-                    },
-                    {
-                        field: "Y",
-                        title: "y",
-                        width: "2em",
-            
-                    },
-                     {
-                         field: "Z",
-                         title: "z",
-                         width: "2em",
-            
-                     },
-                      {
-                          field: "Owner",
-                          title: "Owner",
-            
-                      },
-                       {
-                           field: "Status",
-                           title: "Status",
-            
-                       },
-                        {
-                            field: "IsRetro",
-                            title: "Retro",
-            
-                        },
-                         {
-                             field: "BugID",
-                             title: "BugID",
-            
-                         },
-                          {
-                              field: "Fix",
-                              title: "Fix",
-            
-                          },
-                           {
-                               field: "Failure",
-                               title: "Failure",
-            
-                           },
-                            {
-                                field: "CategoryName",
-                                title: "Category",
-            
-                            },
-                             {
-                                 field: "LstModified",
-                                 title: "Last Modified",
-                                 width: "8em",
-            
-                             },
-                              {
-                                  field: "",
-                                  title: "Action",
-                              }
-                ],
 
 
-            });
-        }
+        });
     }
+};
+
+function customBoolEditor(container, options) {
+    var guid = kendo.guid();
+    //$('<input class="k-checkbox" id="' + guid + '" type="textbox" name="Last Modified" data-type="DateTime" data-bind="checked:Last Modified">').appendTo(container);
+    //$('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
+    $('<input class="k-textbox" id="' + guid + '" type="TextBox" name="Last Modified" data-type="DateTime" data-bind="checked:Last Modified">').appendTo(container);
+    ('<label class="k-checkbox-label" for="' + guid + '">&#8203;</label>').appendTo(container);
+}
     //displaying the data in the grid
     function displayGrid() {
         
@@ -147,4 +156,4 @@
                 handleAjaxError(xmlHttpRequest, textStatus);
             }
         });
-    }
+}
