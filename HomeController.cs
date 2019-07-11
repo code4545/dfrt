@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using DeploymentFailureRetroTracker.Models;
 
 
-namespace DeploymentFailure_RetroTracker.Controllers
+namespace DeploymentFailureRetroTracker.Controllers
 {
     public class HomeController : Controller
     {
@@ -11,53 +15,39 @@ namespace DeploymentFailure_RetroTracker.Controllers
 
             return View();
         }
-      [HttpGet]
+     [HttpGet]
         public ActionResult GetDetails()
        {
-           
             return View();
+            //var model = new Dfrt();
+            //return View(model);
         }
         [HttpPost]
-        //public ActionResult GetDetails(DateTime? FromDate, DateTime? ToDate, int CategoryId, string CategoryName,bool? IsRetro, string ErrorDescription)
-        public ActionResult GetDetails(string FromDate, string ToDate, int CategoryId, string IsRetro, string ErrorDescription)
+        public ActionResult GetDetails(string FromDate, string ToDate, int CategoryId, string ErrorDescription, string IsRetro)
         {
+            
             return View();
-
         }
-        //public ActionResult GetDetails()
+        //public ActionResult Readgrid()
         //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult GetDetails(Dfrt failure)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        using (OurDbContext db = new OurDbContext())
-        //        {
-        //            db.form.Add(failure);
-        //            db.SaveChanges();
-        //        }
-        //        ModelState.Clear();
-        //    }
-        //    return View();
-        //}
-        ////display
-        //public ActionResult DisplayDetails()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult DisplayDetails(Dfrt user )
-        //{
-        //    //using (OurDbContext db = new OurDbContext())
-        //    //{
+        //    Dfrt d = new Dfrt();
+        //    //List<Dfrt> pm = d.GetDetails();
+        //    return Json(JsonRequestBehavior.AllowGet);
 
-        //    //}
-        //        return View();
         //}
+        //[HttpPost]
+        //public ActionResult Updategrid(int DeptId)
+        //{
+        //    int id = DeptId;
+        //    string ErrorDescription = Request["ErrorDescription"].ToString();
+        //    return View();
+        //}
+
     }
 
-}
+
+    }
+
+
 
    
