@@ -5,23 +5,23 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace DeploymentFailure_RetroTracker.Models 
+namespace DeploymentFailureRetroTracker.Models
 {
     public class Dfrt
     {
-
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode =true)]
         public DateTime FromDate { get; set; }
-
-        //    public string FromDate { get; set; }
-
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public DateTime ToDate { get; set; }
-        //public string ToDate { get; set; }
-
-        public List<SelectListItem> Categories { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        [Required(ErrorMessage = "Is Retro is mandatory")]
-        public bool? IsRetro { get; set; }
+        public List<SelectListItem> Categories { get; set; }
+       
+       
+        [Required(ErrorMessage ="Is Retro is mandatory")]
+        public bool IsRetro {get;set;}
 
         public string ErrorDescription { get; set; }
 
@@ -45,13 +45,11 @@ namespace DeploymentFailure_RetroTracker.Models
 
         public DateTime LstModified { get; set; }
 
-
-
-
-
-
     }
 
+  
+  
 
+       
+    }
 
-}

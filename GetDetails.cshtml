@@ -6,34 +6,41 @@
  <div>
         <h4>From Date</h4>
        <input id="frmdatetimepicker" name="FromDate" />
-
         <h4>To Date</h4>
         <input id="todatetimepicker" name="ToDate" />
 
-        <h4>Select Category</h4>
-        @Html.DropDownListFor(m => m.CategoryId, new List<SelectListItem>
+      
+     <h4>Select Category</h4>
+     @Html.DropDownListFor(m => m.CategoryId, new List<SelectListItem>
          {
        new SelectListItem {Text="Production",Value ="1"},
        new SelectListItem {Text="Pre-Production",Value ="2"},
        new SelectListItem {Text="All",Value ="3"}
 
          })
-     
+
      <div>Error Description: <input type="text" name="ErrorDescription"><br></div>
 
-        <div>
+        @*<div>
             Is Retro:<input type="checkbox" name="IsRetro" checked="checked" id="myCheck" onclick="myFunction()">
-        </div>
+        </div>*@
+     <label for="Remember">&nbsp; Is Retro:</label>
+     <input id="Remember" name="Remember" type="checkbox" value="IsRetro" />
+     
     </div>
-    <button class="btn btn-sub" id="btnsubmit">Submit</button>
-    <button class="btn btn-ref" id="btnrefresh">Refresh</button>
-
+  
     <div class="row">
         <div class="col-md-12">
             <h4></h4>
             <div id="gridretro"></div>
         </div>
     </div>
+   <br/>
+        <center>
+            <button class="btn btn-sub" id="btnsubmit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-ref" id="btnrefresh">Refresh</button>
+        </center>
+   
   
 </form>
 

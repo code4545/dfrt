@@ -17,16 +17,16 @@ namespace DeploymentFailureRetroTracker.Controllers
         }
      [HttpGet]
         public ActionResult GetDetails()
-       {
+
+        {
             return View();
-            //var model = new Dfrt();
-            //return View(model);
+
         }
         [HttpPost]
-        public ActionResult GetDetails(string FromDate, string ToDate, int CategoryId, string ErrorDescription, string IsRetro)
+        public ActionResult GetDetails(Dfrt det)
         {
-            
-            return View();
+           
+            return View(det);
         }
         //public ActionResult Readgrid()
         //{

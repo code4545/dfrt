@@ -24,6 +24,7 @@ var kendoUIHelper = {
             scrollable: true,
             editable: { mode: "inline" },
             sortable: true,
+            resizable: true,
             pageable: {
                 refresh: false,
                 pageSizes: [5, 10, 20, 30],
@@ -83,7 +84,8 @@ var kendoUIHelper = {
                 },
                 {
                     field: "IsRetro",
-                    title: "Retro"
+                    title: "Retro",
+                    width: "2em"
 
                 },
                 {
@@ -117,7 +119,7 @@ var kendoUIHelper = {
                     width: "3em"
                 },
                {
-                   command: [{ name: "edit", text: "Edit", click: editRecord, imageClass: "k-icon k-edit" },
+                   command: [{ name: "edit", text: "Edit", click: editRecord },
                           ],
                },
             ],      
